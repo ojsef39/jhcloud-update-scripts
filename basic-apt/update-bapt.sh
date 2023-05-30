@@ -1,32 +1,13 @@
 #!/bin/bash
 
-# Function for logging
-log_info() {
-  local log_message="$1"
-  echo
-  echo "[INFO] ${log_message}"
-  echo
-}
+# Get the current date and time
+now=$(date +"%m_%d_%Y")
 
-# Function for updating package list
-update_package_list() {
-  log_info "Updating package list"
-  if ! sudo apt update; then
-    log_info "Failed to update package list"
-    exit 1
-  fi
-}
+# Define the output file name
+logfile="/var/log/update_script_$now.log"
 
-# Function for upgrading installed packages
-upgrade_packages() {
-  log_info "Upgrading installed packages"
-  if ! sudo apt upgrade -y; then
-    log_info "Failed to upgrade installed packages"
-    exit 1
-  fi
-}
-
-# Execution
-update_package_list
-upgrade_packages
-log_info "Script execution finished successfully"
+# Perform the update/upgrade and output the result to the logfile
+echo "Starting system update..." | tee -a $logfile
+sudo apt update -y | tee -a $logfile
+sudo apt upgrade -y | tee -a $logfile
+echo "System update completed successfully!" | tee -a $logfile
