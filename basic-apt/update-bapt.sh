@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Get the current date and time
 now=$(date +"%m_%d_%Y")
 
