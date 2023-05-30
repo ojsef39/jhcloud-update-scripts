@@ -1,3 +1,3 @@
-**Usage:**
+**Your cron entry should look something like this:**
 
-0 0 * * * cd /path/to/script && curl -O https://raw.githubusercontent.com/user/repo/main/update_script.sh && bash update_script.sh
+```0 2 * * 1 cd /root/jhcloud-update-scripts/basic-apt && git pull origin --autostash && chmod +x update-bapt.sh && ./update-bapt.sh```
