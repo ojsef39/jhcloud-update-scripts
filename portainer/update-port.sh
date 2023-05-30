@@ -20,6 +20,7 @@ docker stop portainer | tee -a $logfile
 docker pull portainer/portainer-ce | tee -a $logfile
 
 # Start a new Portainer container using the updated image
+wait 10
 docker run -d -p 443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /evergreen:/data portainer/portainer-ce:latest --http-disabled | tee -a $logfile
 
 echo "System update completed successfully!" | tee -a $logfile
