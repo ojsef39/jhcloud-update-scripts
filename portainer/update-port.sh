@@ -13,8 +13,9 @@ apt-get upgrade -y | tee -a $logfile
 
 # Update Portainer
 echo "Updating portainer..." | tee -a $logfile
-# Stop the Portainer container
+# Stop and remove the Portainer container
 docker stop portainer | tee -a $logfile
+docker rm portainer | tee -a $logfile
 
 # Pull the latest version of the Portainer image
 docker pull portainer/portainer-ce | tee -a $logfile
