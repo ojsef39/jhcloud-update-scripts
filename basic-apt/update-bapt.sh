@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Get the current date and time
 now=$(date +"%m_%d_%Y")
 
@@ -7,6 +8,6 @@ logfile="/var/log/update_script_$now.log"
 
 # Perform the update/upgrade and output the result to the logfile
 echo "Starting system update..." | tee -a $logfile
-sudo apt update -y | tee -a $logfile
-sudo apt upgrade -y | tee -a $logfile
+apt update -y | tee -a $logfile
+apt upgrade -y | tee -a $logfile
 echo "System update completed successfully!" | tee -a $logfile
